@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caja Fuerte</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .contenedor {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* El botón estará oculto por defecto */
+        }
+
+        .enviar-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .video-btn {
+            background-color: red;
+            color: white;
+            display: none; /* El botón del vídeo también estará oculto por defecto */
+        }
+
+        .mensaje {
+            margin-top: 20px;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h1>Caja Fuerte</h1>
+    <p>Escribe la contraseña para abrir la caja fuerte:</p>
+    <input type="password" id="contraseña" placeholder="Contraseña">
+    <button class="enviar-btn" id="boton-enviar" onclick="verificarContraseña()">Enviar</button>
+    <div class="mensaje" id="mensaje"></div>
+    <button class="video-btn" id="boton-video" onclick="verVideo()">Mira el vídeo</button>
+</div>
+
+<script>
+    // Mostrar el botón "Enviar" cuando el usuario escribe algo en el campo
+    document.getElementById('contraseña').addEventListener('input', function() {
+        const botonEnviar = document.getElementById('boton-enviar');
+        if (this.value.length > 0) {
+            botonEnviar.style.display = 'inline-block'; // Mostrar botón "Enviar"
+        } else {
+            botonEnviar.style.display = 'none'; // Ocultar si está vacío
+        }
+    });
+
+    // Verificar la contraseña
+    function verificarContraseña() {
+        const contraseña = document.getElementById('contraseña').value;
+        const mensaje = document.getElementById('mensaje');
+        const botonVideo = document.getElementById('boton-video');
+
+        if (contraseña === '57891') {
+            mensaje.textContent = ''; // Limpiar mensaje de error
+            botonVideo.style.display = 'inline-block'; // Mostrar el botón de "Mira el vídeo"
+        } else {
+            mensaje.textContent = 'Contraseña incorrecta. Intenta de nuevo.';
+        }
+    }
+
+    // Redirigir al vídeo
+    function verVideo() {
+        window.location.href = 'https://www.youtube.com/shorts/0yphnMiTAyQ'; // Reemplaza por el link de tu vídeo
+    }
+</script>
+
+</body>
+</html>
